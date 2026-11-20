@@ -76,6 +76,32 @@ adk web
 
 Abrir `http://localhost:8000` y elegir `agent` en el selector de arriba a la izquierda.
 
+## Ejemplos para probar
+
+1. **Guardar datos** → usa `index_data`
+
+   > Guardá en la colección apuntes: "Una list comprehension en python es una forma corta de crear listas, por ejemplo \[x\*2 for x in range(5)\]"
+
+2. **Ver qué hay guardado** → usa `list_collection`
+
+   > ¿Qué colecciones tenés?
+
+3. **Preguntar algo guardado** → usa `list_collection` + `retrieval`
+
+   > ¿Qué es una list comprehension?
+
+4. **Preguntar algo que no está** → usa `retrieval` y después `web_search`
+
+   > ¿Qué novedades trae la última versión de python?
+
+5. **Probar validaciones**
+
+   > Buscame en la colección "x" qué es un decorador
+
+   (el nombre es muy corto, así que la tool avisa del error)
+
+En la interfaz de `adk web` se puede ver en cada respuesta qué herramienta llamó el agente y con qué argumentos.
+
 ## Estructura
 
 ```
