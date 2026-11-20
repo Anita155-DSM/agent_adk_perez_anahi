@@ -19,9 +19,27 @@ def web_search(query: str, max_results: int = 5):
         query: str -> La consulta buscar en internet.
         max_results: int -> cantidad maxima de resultados.
     """
+    # si la query viene vacia no tiene sentido buscar
+    if not query or not str(query).strip():
+        return "Error: la consulta esta vacia, pasame algo para buscar."
+
+    # por si el modelo manda un numero raro o un string
+    try:
+        max_results = int(max_results)
+    except (TypeError, ValueError):
+        max_results = 5
+    if max_results <= 0:
+        return "Error: max_results tiene que ser mayor a 0."
+    # le pongo un tope asi no trae una banda de resultados
+    if max_results > 10:
+        max_results = 10
+
     try:
         results = DDGS().text(query=query,
                               max_results=max_results)
+        # si no encontro nada aviso, asi el modelo no inventa
+        if not results:
+            return f"No se encontraron resultados en internet para: '{query}'."
         return results
     except Exception as e:
         print("Error interno al utilizar la herramienta", e)
